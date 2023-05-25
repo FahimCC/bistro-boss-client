@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.squeeze {
+	@apply transform active:scale-90 transition-transform;
+}
+.btn-custom {
+	@apply btn btn-outline text-[#BB8506] border-[#BB8506] border-0 border-b-2 hover:bg-[#1F2937] hover:border-[#1F2937] hover:text-[#BB8506];
+}
