@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+import coverImg from '../../../assets/home/chef-service.jpg';
 import SectionCover from '../../Shared/SectionCover/SectionCover';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
@@ -7,12 +9,21 @@ import PopularMenu from '../PopularMenu/PopularMenu';
 import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
+	const des =
+		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus laborum deserunt ratione dolor officiis praesentium! Deserunt magni aperiam dolor eius dolore at, nihil iusto ducimus incidunt quibusdam nemo.';
 	return (
 		<div>
+			<Helmet>
+				<title>Bistro Boss | Home</title>
+			</Helmet>
 			<Banner />
 			<Category />
 			<div className='container'>
-				<SectionCover />
+				<SectionCover
+					coverImg={coverImg}
+					title={'Bistro Boss'}
+					description={des}
+				/>
 			</div>
 			<PopularMenu />
 			<div className='container my-24'>

@@ -2,13 +2,24 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 	const NavigationBar = (
-		<div className='font-extrabold text-lg uppercase '>
+		<>
 			<li className='hover:text-[#EEFF25]'>
-				<Link to='/' className='hover:bg-transparent '>
+				<Link
+					to='/'
+					className='hover:bg-transparent font-extrabold text-lg uppercase '
+				>
 					Home
 				</Link>
 			</li>
-		</div>
+			<li className='hover:text-[#EEFF25]'>
+				<Link
+					to='/our-menu'
+					className='hover:bg-transparent font-extrabold text-lg uppercase '
+				>
+					Our Menu
+				</Link>
+			</li>
+		</>
 	);
 
 	return (

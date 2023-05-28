@@ -1,6 +1,6 @@
 const SectionTitle = ({ heading, subHeading }) => {
 	return (
-		<div className='flex flex-col items-center mb-8 '>
+		<div className='flex flex-col items-center mb-8 my-16'>
 			<p className='text-[#D99904] text-sm md:text-base'>
 				<i>--- {subHeading} ---</i>
 			</p>
