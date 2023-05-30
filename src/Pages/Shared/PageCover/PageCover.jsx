@@ -1,4 +1,4 @@
-const PageCover = ({ banner,title }) => {
+const PageCover = ({ banner, title }) => {
 	return (
 		<div
 			className='h-[400px] md:h-[500px] lg:h-[700px] w-full bg-cover bg-fixed bg-center'

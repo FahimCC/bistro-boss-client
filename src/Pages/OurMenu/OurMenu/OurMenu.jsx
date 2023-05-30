@@ -19,8 +19,8 @@ const OurMenu = () => {
 	const salads = menu.filter(item => item.category === 'salad');
 	const soups = menu.filter(item => item.category === 'soup');
 	const pizzas = menu.filter(item => item.category === 'pizza');
-	console.log('Offer : ', offered);
-	console.log('Dessert: ', desserts);
+	// console.log('Offer : ', offered);
+	// console.log('Dessert: ', desserts);
 
 	const description =
 		'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
@@ -28,10 +28,10 @@ const OurMenu = () => {
 	return (
 		<div>
 			<Helmet>
-				<title>Bistro Boss | Our Menu</title>
+				<title>Bistro Boss | Menu</title>
 			</Helmet>
 			<PageCover banner={banner} title={'OUR MENU'} />
-			<div className='my-24'>
+			<div className='my-10 md:my-24'>
 				<SectionTitle
 					subHeading="Don't miss"
 					heading="TODAY'S OFFER"
@@ -39,28 +39,28 @@ const OurMenu = () => {
 				<MenuCategory items={offered} btnText={'ORDER YOUR FAVOURITE FOOD'} />
 				<MenuCategory
 					coverImg={dessertImg}
-					title={'DESSERTS'}
+					title={'dessert'}
 					description={description}
 					items={desserts}
 					btnText={'ORDER YOUR FAVOURITE FOOD'}
 				/>
 				<MenuCategory
 					coverImg={pizzaImg}
-					title={'PIZZAS'}
+					title={'pizza'}
 					description={description}
 					items={pizzas}
 					btnText={'ORDER YOUR FAVOURITE FOOD'}
 				/>
 				<MenuCategory
 					coverImg={saladImg}
-					title={'SALADS'}
+					title={'salad'}
 					description={description}
 					items={salads}
 					btnText={'ORDER YOUR FAVOURITE FOOD'}
 				/>
 				<MenuCategory
 					coverImg={soupImg}
-					title={'SOUPS'}
+					title={'soup'}
 					description={description}
 					items={soups}
 					btnText={'ORDER YOUR FAVOURITE FOOD'}

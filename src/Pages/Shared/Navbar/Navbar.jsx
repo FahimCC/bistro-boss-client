@@ -16,7 +16,31 @@ const Navbar = () => {
 					to='/our-menu'
 					className='hover:bg-transparent font-extrabold text-lg uppercase '
 				>
-					Our Menu
+					Menu
+				</Link>
+			</li>
+			<li className='hover:text-[#EEFF25]'>
+				<Link
+					to='/our-shop/all'
+					className='hover:bg-transparent font-extrabold text-lg uppercase '
+				>
+					Order
+				</Link>
+			</li>
+			<li className='hover:text-[#EEFF25]'>
+				<Link
+					to='/contact'
+					className='hover:bg-transparent font-extrabold text-lg uppercase '
+				>
+					Contact
+				</Link>
+			</li>
+			<li className='hover:text-[#EEFF25]'>
+				<Link
+					to='/login'
+					className='hover:bg-transparent font-extrabold text-lg uppercase '
+				>
+					Login
 				</Link>
 			</li>
 		</>

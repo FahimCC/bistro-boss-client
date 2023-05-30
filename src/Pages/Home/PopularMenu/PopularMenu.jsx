@@ -1,4 +1,3 @@
-import MenuItem from '../../../components/MenuItem';
 import SectionTitle from '../../../components/SectionTitle';
 import useMenu from '../../../hooks/useMenu';
 import MenuCategory from '../../Shared/MenuCategory/MenuCategory';
