@@ -18,14 +18,14 @@ const OrderTab = ({ items }) => {
 		},
 	};
 
-	console.log('length', Math.ceil(items.length / 6));
+	// console.log('length', Math.ceil(items.length / 6));
 	const length = Math.ceil(items.length / 6);
-	let array = [];
+	const array = [];
 
 	for (let i = 0; i < length; i++) {
-		array.push(i * 6);
+		array.push(i);
 	}
-	console.log(array);
+	// console.log(array);
 
 	return (
 		<Swiper
@@ -37,8 +37,8 @@ const OrderTab = ({ items }) => {
 			{array.map((arr, i) => (
 				<SwiperSlide key={i}>
 					<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-6'>
-						{items.slice(arr, arr + 6).map(item => (
-							<MenuCard key={item._id} item={item} price={true}></MenuCard>
+						{items.slice(arr * 6, (arr + 1) * 6).map(item => (
+							<MenuCard key={item._id} item={item} isPrice={true}></MenuCard>
 						))}
 					</div>
 				</SwiperSlide>
