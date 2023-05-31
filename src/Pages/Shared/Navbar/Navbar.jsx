@@ -1,6 +1,16 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+	const { user, logout } = useContext(AuthContext);
+
+	const handleLogout = () => {
+		logout()
+			.then(() => {})
+			.catch(error => console.log(error));
+	};
+
 	const NavigationBar = (
 		<>
 			<li className='hover:text-[#EEFF25]'>
@@ -35,14 +45,49 @@ const Navbar = () => {
 					Contact
 				</Link>
 			</li>
-			<li className='hover:text-[#EEFF25]'>
-				<Link
-					to='/login'
-					className='hover:bg-transparent font-extrabold text-lg uppercase '
-				>
-					Login
-				</Link>
-			</li>
+			{!user ? (
+				<li className='hover:text-[#EEFF25]'>
+					<Link
+						to='/login'
+						className='hover:bg-transparent font-extrabold text-lg uppercase '
+					>
+						Login
+					</Link>
+				</li>
+			) : (
+				<>
+					<li className='hover:text-[#EEFF25]'>
+						<Link
+							onClick={handleLogout}
+							className='hover:bg-transparent font-extrabold text-lg uppercase '
+						>
+							Logout
+						</Link>
+					</li>
+					<div className='dropdown dropdown-end'>
+						<label
+							tabIndex={0}
+							className='btn btn-ghost btn-circle avatar tooltip tooltip-open tooltip-bottom tooltip-warning'
+							data-tip={user.displayName}
+						>
+							<div className='w-10 rounded-full'>
+								<img src={user.photoURL} />
+							</div>
+						</label>
+						{/* <ul
+							tabIndex={0}
+							className='mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52'
+						>
+							<li>
+								<a>Settings</a>
+							</li>
+							<li>
+								<a>Logout</a>
+							</li>
+						</ul> */}
+					</div>
+				</>
+			)}
 		</>
 	);
 

@@ -8,6 +8,7 @@ const Contact = () => {
 			<Helmet>
 				<title>Bistro Boss | Contact</title>
 			</Helmet>
+			
 			<PageCover banner={banner} title='OUR SHOP' />
 		</div>
 	);
