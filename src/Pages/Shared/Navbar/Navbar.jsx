@@ -4,13 +4,13 @@ import useCart from '../../../hooks/useCart';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
-	const { user, logout } = useContext(AuthContext);
+	const { user, logOut } = useContext(AuthContext);
 	const [cart] = useCart();
 	const subTotal = cart.reduce((acc, cur) => acc + cur.price, 0);
 	// console.log('total', subTotal);
 
 	const handleLogout = () => {
-		logout()
+		logOut()
 			.then(() => {})
 			.catch(error => console.log(error));
 	};
@@ -53,7 +53,7 @@ const Navbar = () => {
 				<li className='hover:text-[#EEFF25]'>
 					<Link
 						to='/login'
-						className='hover:bg-transparent font-extrabold text-lg uppercase '
+						className='hover:bg-transparent font-extrabold text-lg uppercase border-2 border-l-transparent border-r-transparent border-[#BB8506] hover:border-[#BB8506] squeeze'
 					>
 						Login
 					</Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
 									<span className='text-info'>Subtotal: ${subTotal}</span>
 									<div className='card-actions'>
 										<button className='btn btn-primary btn-block'>
-											View cart
+											<Link to='dashboard/my-cart'>View cart</Link>
 										</button>
 									</div>
 								</div>
@@ -115,7 +115,7 @@ const Navbar = () => {
 								className='mt-3 p-2 shadow menu menu-compact dropdown-content rounded-box w-52 bg-black bg-opacity-80 uppercase font-semibold'
 							>
 								<li className='hover:text-[#EEFF25]'>
-									<Link>Profile</Link>
+									<Link to='/dashboard'>Dashboard</Link>
 								</li>
 								<li className='hover:text-[#EEFF25]' onClick={handleLogout}>
 									<Link>Logout</Link>

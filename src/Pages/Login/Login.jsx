@@ -7,13 +7,14 @@ import {
 	loadCaptchaEnginge,
 	validateCaptcha,
 } from 'react-simple-captcha';
-import google from '../../assets/icon/google.png';
 import bgLogin from '../../assets/others/authentication.png';
 import auth from '../../assets/others/authentication2.png';
+import SocialLogin from '../../components/SocialLogin';
 import { AuthContext } from '../../providers/AuthProvider';
+import axios from 'axios';
 
 const Login = () => {
-	const { signIn, googleSignIn } = useContext(AuthContext);
+	const { signIn } = useContext(AuthContext);
 	useEffect(() => {
 		loadCaptchaEnginge(6);
 	}, []);
@@ -38,17 +39,7 @@ const Login = () => {
 				console.log(loggedUser);
 				form.reset();
 				toast.success('User Login Successful.');
-				navigate(from, { replace: true });
-			})
-			.catch(error => console.log(error));
-	};
 
-	const handleGoogleLogin = () => {
-		googleSignIn()
-			.then(result => {
-				const loggedUser = result.user;
-				console.log(loggedUser);
-				toast.success('User Login Successful.');
 				navigate(from, { replace: true });
 			})
 			.catch(error => console.log(error));
@@ -121,17 +112,11 @@ const Login = () => {
 											className='btn btn-primary'
 											type='submit'
 											value='Login'
-											disabled={disable}
+											disabled={false}
 										/>
 									</div>
-									<div className='divider'>OR</div>
-									<Link
-										onClick={handleGoogleLogin}
-										className='border-2 mt-2 h-10 flex justify-center items-center px-3 py-1 rounded-lg squeeze'
-									>
-										<img className='w-11 h-8' src={google} alt='' />
-										<span className='-ml-1'>Continue with Google</span>
-									</Link>
+									
+									<SocialLogin from={from} />
 									<p className='text-[#D1A054] text-center'>
 										<small>
 											New here?

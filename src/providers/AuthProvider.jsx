@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
 	GoogleAuthProvider,
 	createUserWithEmailAndPassword,
@@ -21,18 +22,22 @@ const AuthProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 
 	const createUser = (email, password) => {
+		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
 	const signIn = (email, password) => {
+		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
 	const googleSignIn = () => {
+		setLoading(true);
 		return signInWithPopup(auth, provider);
 	};
 
-	const logout = () => {
+	const logOut = () => {
+		setLoading(true);
 		return signOut(auth);
 	};
 
@@ -47,7 +52,18 @@ const AuthProvider = ({ children }) => {
 		const unsubscribe = onAuthStateChanged(auth, currentUser => {
 			setUser(currentUser);
 			console.log('User: ', currentUser);
-			setLoading(false);
+
+			if (currentUser && currentUser.email) {
+				axios
+					.post('http://localhost:5000/jwt', { email: currentUser.email })
+					.then(data => {
+						// console.log(data.data.token);
+						localStorage.setItem('access-token', data.data.token);
+						setLoading(false);
+					});
+			} else {
+				localStorage.removeItem('access-token');
+			}
 		});
 		return () => {
 			unsubscribe();
@@ -59,7 +75,7 @@ const AuthProvider = ({ children }) => {
 		loading,
 		createUser,
 		signIn,
-		logout,
+		logOut,
 		googleSignIn,
 		updateUserProfile,
 	};

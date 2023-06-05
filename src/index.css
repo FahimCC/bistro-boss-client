@@ -10,3 +10,6 @@
 .btn-custom {
 	@apply bg-[#E8E8E8] btn btn-outline text-[#BB8506] border-[#BB8506] border-0 border-b-2 hover:bg-[#1F2937] hover:border-[#1F2937] hover:text-[#BB8506];
 }
+.squeeze {
+	@apply transform active:scale-90 transition-transform;
+}

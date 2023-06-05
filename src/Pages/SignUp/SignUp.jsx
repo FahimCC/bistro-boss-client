@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
@@ -5,11 +6,12 @@ import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import bgLogin from '../../assets/others/authentication.png';
 import login from '../../assets/others/authentication2.png';
+import SocialLogin from '../../components/SocialLogin';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const SignUp = () => {
 	// const [disable, setDisable] = useState(true);
-	const { createUser, logout, updateUserProfile } = useContext(AuthContext);
+	const { createUser, logOut, updateUserProfile } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -26,7 +28,16 @@ const SignUp = () => {
 		createUser(data.email, data.password)
 			.then(result => {
 				const loggedUser = result.user;
-				console.log(loggedUser);
+				console.log('loggedUser signup : ', data.name, );
+				axios
+					.post('http://localhost:5000/users', {
+						email: loggedUser.email,
+						name: data.name,
+					})
+					.then(data => {
+						console.log('axios post : ', data);
+						navigate(from, { replace: true });
+					});
 				reset();
 
 				updateUserProfile(data.name, data.photoURL)
@@ -35,7 +46,7 @@ const SignUp = () => {
 
 				toast.success('Registration Successful.Please Login...');
 
-				logout()
+				logOut()
 					.then(() => {})
 					.catch(error => console.log(error));
 
@@ -180,6 +191,7 @@ const SignUp = () => {
 											// disabled={disable}
 										/>
 									</div>
+									<SocialLogin from={from} />
 									<p className='text-[#D1A054] text-center'>
 										<small>
 											Already registered?
